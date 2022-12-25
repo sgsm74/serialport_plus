@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'serialport_plus_method_channel.dart';
@@ -23,7 +24,24 @@ abstract class SerialportPlusPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
-    throw UnimplementedError('platformVersion() has not been implemented.');
+  Future<List?> getAllDevices() {
+    throw UnimplementedError('getAllDevices() has not been implemented.');
+  }
+
+  Future<List?> getAllDevicesPath() {
+    throw UnimplementedError('getAllDevicesPath() has not been implemented.');
+  }
+
+  Future<bool?> open(
+      String filePath, int baudrate, int dataBits, int parity, int stopBits) {
+    throw UnimplementedError('open() has not been implemented.');
+  }
+
+  Future<bool?> write(Uint8List data) {
+    throw UnimplementedError('write() has not been implemented.');
+  }
+
+  Future<bool?> close() {
+    throw UnimplementedError('close() has not been implemented.');
   }
 }
