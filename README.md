@@ -1,15 +1,36 @@
 # serialport_plus
 
-A new Flutter plugin project.
 
-## Getting Started
+A Flutter plugin integrated with [Android-SerialPort-API](https://github.com/licheedev/Android-SerialPort-API).
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+This plugin works only for rooted Android devices.
 
-For help getting started with Flutter development, view the
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Usage
+
+### List devices
+
+``` dart
+  List devices = await SerialportFlutter.listDevices();
+
+```
+### List devices path
+
+``` dart
+  List devices = await SerialportFlutter.listDevicesPath();
+
+```
+### Open/Close device
+
+``` dart
+bool openResult = await SerialportFlutter.open('/your/device/path', baudrate, dataBits, parity, stopBits);
+bool closeResult = await SerialportFlutter.close();
+```
+
+### Write data to device
+
+``` dart
+
+SerialportFlutter.write(Uint8List.fromList("Write some data".codeUnits));
+```
 
