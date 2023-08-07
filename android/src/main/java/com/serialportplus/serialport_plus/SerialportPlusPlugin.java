@@ -101,6 +101,10 @@ public class SerialportPlusPlugin implements FlutterPlugin, MethodCallHandler, E
         ArrayList<String> devicesPath = getAllDevicesPath();
         Log.d(TAG, devicesPath.toString());
         result.success(devicesPath);
+    }else if(call.method.equals("read")){
+        ArrayList<String> devicesPath = 
+        Log.d(TAG, devicesPath.toString());
+        result.success(devicesPath);
     }else{
         result.notImplemented();
     }
@@ -169,6 +173,15 @@ public class SerialportPlusPlugin implements FlutterPlugin, MethodCallHandler, E
        //mOutputStream.write('\n');
     } catch (IOException e) {
       Log.e(TAG, "write data exception");
+      Log.e(TAG, e.toString());
+    }
+  }
+
+  private void read(byte[] data) {
+    try {
+       mInputStream.read();
+    } catch (IOException e) {
+      Log.e(TAG, "read data exception");
       Log.e(TAG, e.toString());
     }
   }

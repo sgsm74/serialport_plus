@@ -43,6 +43,12 @@ class MethodChannelSerialportPlus extends SerialportPlusPlatform {
   }
 
   @override
+  Future<Stream?> read() async {
+    final result = await methodChannel.invokeMethod<Stream>('read');
+    return result;
+  }
+
+  @override
   Future<bool?> close() async {
     final result = await methodChannel.invokeMethod<bool>('close');
     return result;

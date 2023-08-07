@@ -41,6 +41,10 @@ abstract class SerialportPlusPlatform extends PlatformInterface {
     throw UnimplementedError('write() has not been implemented.');
   }
 
+  Future<Stream?> read() {
+    throw UnimplementedError('read() has not been implemented.');
+  }
+
   Future<bool?> close() {
     throw UnimplementedError('close() has not been implemented.');
   }

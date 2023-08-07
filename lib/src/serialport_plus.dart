@@ -21,6 +21,10 @@ class SerialportPlus {
     return SerialportPlusPlatform.instance.write(data);
   }
 
+  Future<Stream?> read() {
+    return SerialportPlusPlatform.instance.read();
+  }
+
   Future<bool?> close() {
     return SerialportPlusPlatform.instance.close();
   }

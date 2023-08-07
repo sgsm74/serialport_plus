@@ -41,4 +41,9 @@ class MockSerialportPlusPlatform
   Future<bool?> write(Uint8List data) {
     throw UnimplementedError();
   }
+
+  @override
+  Future<Stream?> read() {
+    throw UnimplementedError();
+  }
 }
