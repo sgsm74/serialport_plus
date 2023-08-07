@@ -43,7 +43,7 @@ class MockSerialportPlusPlatform
   }
 
   @override
-  Future<Stream?> read() {
+  Stream<Uint8List?> read() {
     throw UnimplementedError();
   }
 }
