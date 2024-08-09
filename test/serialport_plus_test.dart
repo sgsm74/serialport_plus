@@ -43,7 +43,7 @@ class MockSerialportPlusPlatform
   }
 
   @override
-  Stream<Uint8List?> read() {
+  Stream<Uint8List> read() {
     throw UnimplementedError();
   }
 }
