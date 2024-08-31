@@ -32,6 +32,7 @@ public class SerialportPlusPlugin implements FlutterPlugin, MethodCallHandler, E
   protected OutputStream mOutputStream;
   private InputStream mInputStream;
   private ReadThread mReadThread;
+  private EventChannel eventChannel;
   private EventChannel.EventSink mEventSink;
   private Handler mHandler = new Handler(Looper.getMainLooper());;
 
@@ -74,6 +75,8 @@ public class SerialportPlusPlugin implements FlutterPlugin, MethodCallHandler, E
   public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
     channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "serialport_plus");
     channel.setMethodCallHandler(this);
+    eventChannel = new EventChannel(flutterPluginBinding.getBinaryMessenger(), "serialport_plus/event");
+    eventChannel.setStreamHandler(this);
   }
 
   @Override
@@ -99,10 +102,6 @@ public class SerialportPlusPlugin implements FlutterPlugin, MethodCallHandler, E
         result.success(devices);
     }else if(call.method.equals("getAllDevicesPath")){
         ArrayList<String> devicesPath = getAllDevicesPath();
-        Log.d(TAG, devicesPath.toString());
-        result.success(devicesPath);
-    }else if(call.method.equals("read")){
-        ArrayList<String> devicesPath = 
         Log.d(TAG, devicesPath.toString());
         result.success(devicesPath);
     }else{
