@@ -1,6 +1,6 @@
 name: serialport_plus
 description: Serial Port plugin for Android devices.
-version: 0.0.1
+version: 0.1.0
 homepage: https://saeedqasemi.ir
 repository: https://github.com/sgsm74/serialport_plus
 
