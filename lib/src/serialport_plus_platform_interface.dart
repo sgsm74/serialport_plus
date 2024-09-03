@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'serialport_plus_method_channel.dart';
@@ -39,6 +40,10 @@ abstract class SerialportPlusPlatform extends PlatformInterface {
 
   Future<bool?> write(Uint8List data) {
     throw UnimplementedError('write() has not been implemented.');
+  }
+
+  Stream<Uint8List> read() {
+    throw UnimplementedError('read() has not been implemented.');
   }
 
   Future<bool?> close() {

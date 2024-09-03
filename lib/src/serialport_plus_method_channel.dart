@@ -8,6 +8,7 @@ class MethodChannelSerialportPlus extends SerialportPlusPlatform {
   /// The method channel used to interact with the native platform.
   @visibleForTesting
   final methodChannel = const MethodChannel('serialport_plus');
+  final eventChanel = const EventChannel('serialport_plus/event');
 
   @override
   Future<List?> getAllDevices() async {
@@ -40,6 +41,13 @@ class MethodChannelSerialportPlus extends SerialportPlusPlatform {
     final result =
         await methodChannel.invokeMethod<bool>('write', {"data": data});
     return result;
+  }
+
+  @override
+  Stream<Uint8List> read() {
+    return eventChanel
+        .receiveBroadcastStream()
+        .map<Uint8List>((dynamic value) => value);
   }
 
   @override

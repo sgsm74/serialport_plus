@@ -32,6 +32,7 @@ public class SerialportPlusPlugin implements FlutterPlugin, MethodCallHandler, E
   protected OutputStream mOutputStream;
   private InputStream mInputStream;
   private ReadThread mReadThread;
+  private EventChannel eventChannel;
   private EventChannel.EventSink mEventSink;
   private Handler mHandler = new Handler(Looper.getMainLooper());;
 
@@ -74,6 +75,8 @@ public class SerialportPlusPlugin implements FlutterPlugin, MethodCallHandler, E
   public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
     channel = new MethodChannel(flutterPluginBinding.getBinaryMessenger(), "serialport_plus");
     channel.setMethodCallHandler(this);
+    eventChannel = new EventChannel(flutterPluginBinding.getBinaryMessenger(), "serialport_plus/event");
+    eventChannel.setStreamHandler(this);
   }
 
   @Override
@@ -169,6 +172,15 @@ public class SerialportPlusPlugin implements FlutterPlugin, MethodCallHandler, E
        //mOutputStream.write('\n');
     } catch (IOException e) {
       Log.e(TAG, "write data exception");
+      Log.e(TAG, e.toString());
+    }
+  }
+
+  private void read(byte[] data) {
+    try {
+       mInputStream.read();
+    } catch (IOException e) {
+      Log.e(TAG, "read data exception");
       Log.e(TAG, e.toString());
     }
   }
